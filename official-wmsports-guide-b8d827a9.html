@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>完美体育 · 运动生活方式指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f3ef;
+            color: #1f2a3a;
+            line-height: 1.6;
+        }
+
+        /* 深色头图 hero */
+        .hero {
+            background: linear-gradient(145deg, #0b1119 0%, #1c2838 100%);
+            padding: 4.5rem 2rem 3.8rem;
+            text-align: center;
+            color: #e9eef3;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #8ea3b8, transparent);
+            opacity: 0.3;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            font-weight: 600;
+            color: #fadf9a;
+        }
+
+        .hero .sub {
+            font-size: 1.05rem;
+            color: #b2c2d4;
+            margin-top: 0.4rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            padding-top: 1.2rem;
+            opacity: 0.85;
+        }
+
+        /* 浅色正文区 */
+        .content {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 3rem 1.8rem 4rem;
+        }
+
+        .section-intro {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-intro p {
+            margin-bottom: 1.4rem;
+            font-size: 1.06rem;
+        }
+
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2.8rem 0 2.2rem;
+        }
+
+        .card-item {
+            background: white;
+            flex: 1 1 200px;
+            padding: 1.8rem 1.5rem 1.8rem;
+            border-radius: 28px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+            transition: all 0.2s ease;
+            border: 1px solid rgba(0, 0, 0, 0.02);
+        }
+
+        .card-item:hover {
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05);
+            transform: translateY(-3px);
+        }
+
+        .card-item h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.7rem;
+            color: #1c2838;
+            letter-spacing: 0.02em;
+        }
+
+        .card-item p {
+            color: #415167;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .card-item .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .emphasis-link {
+            color: #a77b48;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .emphasis-link:hover {
+            color: #7a5d32;
+            border-bottom-color: #a77b48;
+        }
+
+        .story-block {
+            background: #faf8f5;
+            padding: 2rem 2rem 2rem 2.2rem;
+            border-radius: 40px;
+            margin: 2.2rem 0 2.2rem;
+            border-left: 4px solid #a77b48;
+        }
+
+        .story-block p {
+            font-size: 1rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .story-block .source {
+            font-size: 0.9rem;
+            color: #65748a;
+            margin-top: 0.8rem;
+            display: block;
+            font-style: normal;
+            opacity: 0.7;
+        }
+
+        .faq-mini {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem 2.2rem;
+            margin: 2.8rem 0 2.5rem;
+        }
+
+        .faq-mini .item {
+            border-top: 1px solid #ddd6cb;
+            padding-top: 1.2rem;
+        }
+
+        .faq-mini .item strong {
+            display: block;
+            font-weight: 600;
+            color: #1f2a3a;
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .faq-mini .item span {
+            font-size: 0.93rem;
+            color: #4b5b70;
+            line-height: 1.5;
+        }
+
+        .cta-note {
+            margin-top: 2.8rem;
+            padding: 1.6rem 2rem;
+            background: #edebe6;
+            border-radius: 60px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .cta-note p {
+            font-size: 1.02rem;
+            color: #273142;
+            max-width: 70%;
+        }
+
+        .cta-note p a {
+            color: #a77b48;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid #a77b48;
+            transition: all 0.2s;
+        }
+
+        .cta-note p a:hover {
+            color: #7a5d32;
+            border-bottom-color: #7a5d32;
+        }
+
+        .cta-note .tag {
+            background: #1c2838;
+            color: #eee5d9;
+            padding: 0.5rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        footer {
+            background: #0b1119;
+            color: #8899ae;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+            border-top: 1px solid #1f2c3b;
+        }
+
+        footer a {
+            color: #b6a68c;
+            text-decoration: none;
+            border-bottom: 1px dotted #6b7b8d;
+        }
+
+        footer a:hover {
+            color: #e2d3be;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+                letter-spacing: 1px;
+            }
+
+            .hero .sub {
+                font-size: 0.9rem;
+                padding-top: 0.8rem;
+            }
+
+            .content {
+                padding: 2rem 1.2rem 3rem;
+            }
+
+            .card-grid {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+
+            .faq-mini {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .cta-note {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+
+            .cta-note p {
+                max-width: 100%;
+            }
+
+            .story-block {
+                padding: 1.5rem;
+                border-left-width: 3px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 1.2rem 2.6rem;
+            }
+
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .card-item {
+                padding: 1.3rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>· <span>完美体育</span> ·</h1>
+        <div class="sub">运动是日常的叙事，也是身体的指南针</div>
+    </header>
+
+    <main class="content">
+        <div class="section-intro">
+            <p>无论你刚开始寻找运动的节奏，还是希望让训练更贴合生活，最实用的第一步往往来自清晰的思路与可靠的参照。这份简明的向导，从场地、装备到情绪恢复，帮你把零散的信息整理成可以跟随的线索。</p>
+            <p>我们关注的是每个人都能参与的运动方式：不追求极限，不制造焦虑。下面这几个方向，或许能成为你重新看待日常活动的一个起点。</p>
+        </div>
+
+        <!-- 三个特点／场景卡片，自然引出 -->
+        <div class="card-grid">
+            <div class="card-item">
+                <span class="emoji">🏃</span>
+                <h3>轻量启动</h3>
+                <p>从15分钟步行或简单的自重训练开始，避免过度计划带来的压力。让身体先适应，再慢慢增加强度。</p>
+            </div>
+            <div class="card-item">
+                <span class="emoji">🧘</span>
+                <h3>恢复即练习</h3>
+                <p>休息日安排轻度拉伸或呼吸练习，既帮助肌肉复原，也让神经系统获得平衡。恢复不是偷懒，是训练的一部分。</p>
+            </div>
+            <div class="card-item">
+                <span class="emoji">🌿</span>
+                <h3>场景融入</h3>
+                <p>把碎片时间变成运动机会：提前一站下车、用站立办公间歇活动肩颈。微小习惯的累积，往往更持久。</p>
+            </div>
+        </div>
+
+        <!-- 一段背景说明 / 杂志式叙事 -->
+        <div class="story-block">
+            <p>很多运动爱好者在回顾自己的过程时，常提到一个共同点：他们并非一开始就拥有大量知识或顶级装备，而是通过一次次简单尝试，逐渐建立起属于自己的方式。无论是跑步、游泳还是居家力量训练，真正的门槛往往不是体能，而是如何找到一种让你愿意持续下去的节奏。</p>
+            <p>这也是为什么，比起追逐潮流，更多人开始回归到“可执行、可持续”的原则上。与其复制别人的计划，不如了解身体给你的信号——而一个值得信赖的信息来源，往往能让这个过程少走许多弯路。</p>
+            <span class="source">—— 摘自运动习惯观察笔记</span>
+        </div>
+
+        <!-- FAQ 摘要，从简明指南和提醒角度 -->
+        <h2 style="font-weight:400; font-size:1.4rem; margin: 2rem 0 1rem; color:#1c2838;">常见疑问 · 快速提醒</h2>
+        <div class="faq-mini">
+            <div class="item">
+                <strong>运动前必须吃点什么吗？</strong>
+                <span>一般不需要刻意加餐。如果空腹不适应，可以提前半小时吃一小根香蕉或一片全麦面包，避免过量。</span>
+            </div>
+            <div class="item">
+                <strong>每天练同一个部位可以吗？</strong>
+                <span>肌肉需要至少48小时恢复。建议交替训练不同肌群，或者安排一天全身低强度活动，一天针对性训练。</span>
+            </div>
+            <div class="item">
+                <strong>怎么判断运动强度合适？</strong>
+                <span>一个简单的参照：运动中能断断续续说话，但无法完整唱完一首歌，大致就是中等强度。如果感到头晕或胸闷，应立刻停下来。</span>
+            </div>
+            <div class="item">
+                <strong>运动后需要立即拉伸吗？</strong>
+                <span>建议先慢走2-3分钟让心率平复，再做静态拉伸。不要猛然弯腰或过度牵拉，尤其当身体还处于热胀状态时。</span>
+            </div>
+        </div>
+
+        <!-- 页尾访问提示，自然包含链接 -->
+        <div class="cta-note">
+            <p>
+                如果你想了解更多具体的训练计划、场地建议以及不同阶段的运动思路，可以翻阅<a href="https://official-wmsports.com">完美体育</a>上的内容，那里有经过整理的专题与经验分享，帮你更有方向地安排自己的运动日常。
+            </p>
+            <span class="tag">随时参考 · 保持轻松</span>
+        </div>
+    </main>
+
+    <footer>
+        <p>基于真实运动经验整理 · 指南内容仅供参考，请根据自身状况合理安排</p>
+        <p style="margin-top:0.4rem;">
+            <a href="https://official-wmsports.com">完美体育</a> · 运动生活方式存档
+        </p>
+    </footer>
+
+</body>
+</html>
